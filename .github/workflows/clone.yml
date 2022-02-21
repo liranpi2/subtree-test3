@@ -1,32 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@liranpi2 
-10RootToolsOrg
-/
-RisxSub
-Private
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Settings
-RisxSub/.github/workflows/clone-once.yml
-@liranpi2
-liranpi2 Update clone-once.yml
-Latest commit 954d29b 3 hours ago
- History
- 1 contributor
-69 lines (57 sloc)  2.61 KB
-   
-name: clone as subtree
+name: clone
 
 on:
   workflow_dispatch:
