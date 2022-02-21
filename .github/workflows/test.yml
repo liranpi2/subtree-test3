@@ -26,3 +26,11 @@ jobs:
           git subtree pull --prefix limiter https://github.com/liranpi2/limiter.git master --squash
           git merge -s subtree --allow-unrelated-histories
           git push
+        continue-on-error: true 
+        
+      - name: update subtree windows_hardening
+        run: |
+          git subtree pull --prefix windows_hardening https://github.com/0x6d69636b/windows_hardening.git master --squash
+          git merge -s subtree --allow-unrelated-histories
+          git push
+        continue-on-error: true 
