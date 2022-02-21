@@ -1,0 +1,61 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@liranpi2 
+10RootToolsOrg
+/
+RisxSub
+Private
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+RisxSub/.github/workflows/clone-once.yml
+@liranpi2
+liranpi2 Update clone-once.yml
+Latest commit 954d29b 3 hours ago
+ History
+ 1 contributor
+69 lines (57 sloc)  2.61 KB
+   
+name: clone as subtree
+
+on:
+  workflow_dispatch:
+    inputs:
+          logLevel:
+            description: 'Log level'     
+            required: true
+            default: 'warning'
+          tags:
+            description: 'build scenario tag'  
+            
+permissions: write-all
+
+jobs:
+  clone:
+    runs-on: ubuntu-latest
+   
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          git config user.name ${{ github.actor }}
+          git config remote.remote.url >&- || git remote add -f windows_hardening https://github.com/0x6d69636b/windows_hardening.git
+      
+      - name: add subtree windows_hardening
+        run: |
+          git subtree add --prefix=windows_hardening https://github.com/0x6d69636b/windows_hardening.git master
+        continue-on-error: true 
+        
+      - name: push changes
+        run: | 
+          git push
+        continue-on-error: true 
